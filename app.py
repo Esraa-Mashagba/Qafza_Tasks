@@ -6,10 +6,19 @@ import pandas as pd
 
 
 # Load the pre-trained model
-with open(r"C:\Users\e.mashagba.ext\Desktop\House\pred.pkl", 'rb') as f:
+with open(r"C:\Users\e.mashagba.ext\Desktop\Qafza_Training\House_Price_prediction\pred.pkl", 'rb') as f:
     model = pickle.load(f)
 
+
+
 app = FastAPI()
+@app.get("/")
+def read_root():
+    return {"message": "Hello World"}
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8001)
 
 # Define the data schema with all features
 class HouseData(BaseModel):
